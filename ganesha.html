@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>FlipKart - Demo Clone</title>
+  <style>
+    :root{
+      --brand-blue:#2874f0;
+      --brand-yellow:#ffd700;
+      --bg:#f6f8fb;
+      --card:#fff;
+      --muted:#6b7280;
+    }
+    *{box-sizing:border-box}
+    body{font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; margin:0; background:var(--bg); color:#111}
+
+    /* Top sale banner */
+    .topbar{background:linear-gradient(90deg,var(--brand-blue),#0b63d6); color:white; padding:8px 16px; display:flex; align-items:center; justify-content:space-between}
+    .topbar .sale{font-weight:700}
+    .topbar .offers{display:flex; gap:12px; align-items:center}
+    .pill{background:rgba(255,255,255,0.12); padding:6px 10px; border-radius:999px; font-size:14px}
+
+    /* Header */
+    header{display:flex; align-items:center; gap:20px; padding:18px 20px; background:linear-gradient(180deg,#fff,rgba(255,255,255,0.8)); box-shadow:0 1px 0 rgba(0,0,0,0.04)}
+    .logo{display:flex; gap:10px; align-items:center}
+    .logo .mark{background:var(--brand-blue); color:white; font-weight:700; padding:6px 10px; border-radius:6px}
+    .search{flex:1; display:flex}
+    .search input{flex:1; padding:10px 12px; border-radius:4px 0 0 4px; border:1px solid #d1d5db; outline:none}
+    .search button{background:var(--brand-blue); color:white; border:none; padding:10px 14px; border-radius:0 4px 4px 0; cursor:pointer}
+    .icons{display:flex; gap:12px; align-items:center}
+
+    /* Layout */
+    .container{max-width:1100px; margin:20px auto; padding:0 16px}
+    .grid{display:grid; grid-template-columns:1fr 320px; gap:20px}
+
+    /* Product card */
+    .product{background:var(--card); border-radius:8px; padding:18px; box-shadow:0 6px 18px rgba(11,37,71,0.06)}
+    .media{display:flex; gap:20px}
+    .image{width:320px; height:320px; border-radius:8px; background:linear-gradient(135deg,#f2f6ff,#eef7ff); display:flex; align-items:center; justify-content:center; border:1px solid #e6eefc}
+    .image svg{width:70%; height:70%}
+    .meta{flex:1}
+    h1{font-size:20px; margin:0 0 8px}
+    .price{font-size:24px; color:var(--brand-blue); font-weight:700}
+    .old{color:var(--muted); text-decoration:line-through; margin-left:8px; font-size:14px}
+    .buy-row{display:flex; gap:12px; margin-top:16px}
+    .btn{background:var(--brand-blue); color:white; padding:10px 14px; border-radius:6px; border:none; cursor:pointer}
+    .outline{background:white; border:1px solid var(--brand-blue); color:var(--brand-blue)}
+
+    /* Right column: contact & details */
+    .contact{position:sticky; top:20px; background:var(--card); padding:16px; border-radius:8px; box-shadow:0 6px 18px rgba(11,37,71,0.04)}
+    .contact h3{margin:0 0 8px}
+    .contact .line{display:flex; gap:8px; align-items:center; margin-bottom:8px}
+    .muted{color:var(--muted); font-size:14px}
+
+    /* Footer */
+    footer{margin-top:30px; padding:18px 20px; text-align:center; color:var(--muted); font-size:14px}
+
+    /* Responsive */
+    @media (max-width:900px){
+      .grid{grid-template-columns:1fr}
+      .image{width:100%; height:260px}
+      .contact{position:relative}
+    }
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <div class="sale">BIG SALE — Up to 50% OFF on selected items!</div>
+    <div class="offers">
+      <div class="pill">Free Delivery</div>
+      <div class="pill">Secure Payments</div>
+    </div>
+  </div>
+
+  <header>
+    <div class="logo">
+      <div class="mark">FLIP</div>
+      <div style="font-weight:700">Kart Clone</div>
+    </div>
+    <div class="search">
+      <input placeholder="Search for products, brands and more" />
+      <button>Search</button>
+    </div>
+    <div class="icons">
+      <div>Sign in</div>
+      <div>Cart(0)</div>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="grid">
+      <div>
+        <div class="product">
+          <div class="media">
+            <div class="image" aria-hidden="true">
+              <!-- simple SVG placeholder for product photo -->
+              <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                <rect x="10" y="20" width="180" height="140" rx="10" fill="#fff" stroke="#dbeafe" />
+                <circle cx="100" cy="90" r="40" fill="#e0f2fe" />
+                <rect x="70" y="130" width="60" height="12" rx="6" fill="#bfdbfe" />
+              </svg>
+            </div>
+
+            <div class="meta">
+              <h1>Example Smartphone — 6.6" Display, 128GB</h1>
+              <div class="price">₹11,499 <span class="old">₹22,999</span></div>
+              <div class="muted" style="margin-top:8px">Free delivery by Aug 18 • 7-day replacement</div>
+
+              <div class="buy-row">
+                <button class="btn" id="buyNow">Buy Now</button>
+                <button class="btn outline" id="addCart">Add to Cart</button>
+              </div>
+
+              <section style="margin-top:14px">
+                <h4 style="margin:0 0 8px">Product details</h4>
+                <ul style="margin:0; padding-left:18px; color:var(--muted)">
+                  <li>Octa-core processor • 6GB RAM</li>
+                  <li>Triple camera • 5000mAh battery</li>
+                  <li>1-year manufacturer warranty</li>
+                </ul>
+              </section>
+
+            </div>
+          </div>
+        </div>
+
+        <!-- promotional banner inside content -->
+        <div style="margin-top:18px; border-radius:8px; overflow:hidden;">
+          <img alt="sale" src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='1200' height='160'><rect width='100%' height='100%' fill='%23ffd700'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' font-size='36' font-family='Arial' fill='%23000'>Mega Fest — Extra 10% off (Use code: MEGA10)</text></svg>" style="width:100%; display:block; border:1px solid #f0e68c" />
+        </div>
+
+      </div>
+
+      <aside class="contact">
+        <h3>Contact & Shipping</h3>
+        <div class="line"><strong>Mobile:</strong><span class="muted"> +91 98765 43210</span></div>
+        <div class="line"><strong>Email:</strong><span class="muted"> example@demo.com</span></div>
+        <div class="line"><strong>Address:</strong><span class="muted"> 123, MG Road, Bengaluru, Karnataka</span></div>
+
+        <hr style="margin:12px 0; border:none; border-top:1px solid #eef2ff" />
+        <div style="font-size:14px; color:var(--muted)">Delivery times & payment options may vary. For bulk orders or seller contact, click below.</div>
+        <div style="margin-top:12px"><button class="btn" style="width:100%" id="contactSeller">Contact Seller</button></div>
+      </aside>
+    </div>
+
+    <!-- small products grid (related) -->
+    <section style="margin-top:22px">
+      <h3 style="margin-bottom:12px">Related Products</h3>
+      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(180px, 1fr)); gap:12px">
+        <!-- repeat card -->
+        <div style="background:var(--card); padding:12px; border-radius:8px; text-align:center">
+          <div style="height:120px; display:flex; align-items:center; justify-content:center">📱</div>
+          <div style="font-weight:600">Phone A</div>
+          <div class="muted">₹7,999</div>
+        </div>
+        <div style="background:var(--card); padding:12px; border-radius:8px; text-align:center">
+          <div style="height:120px; display:flex; align-items:center; justify-content:center">🎧</div>
+          <div style="font-weight:600">Headphones</div>
+          <div class="muted">₹1,199</div>
+        </div>
+        <div style="background:var(--card); padding:12px; border-radius:8px; text-align:center">
+          <div style="height:120px; display:flex; align-items:center; justify-content:center">⌚</div>
+          <div style="font-weight:600">SmartWatch</div>
+          <div class="muted">₹2,499</div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      © 2025 FlipKart — Demo. This is a clone template for learning purposes only.
+    </footer>
+  </main>
+
+  <script>
+    // Minimal interactivity: show quick alerts for actions
+    document.getElementById('buyNow').addEventListener('click', ()=>{
+      alert('Proceeding to checkout for Example Smartphone — demo flow.');
+    });
+    document.getElementById('addCart').addEventListener('click', ()=>{
+      alert('Added to cart (demo).');
+    });
+    document.getElementById('contactSeller').addEventListener('click', ()=>{
+      alert('Seller contact:\nMobile: +91 98765 43210\nEmail: example@demo.com');
+    });
+  </script>
+</body>
+</html>
